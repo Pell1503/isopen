@@ -20,7 +20,7 @@ int porta_aberta(const char *ip, int porta) {
     int sock;
     struct sockaddr_in alvo;
 
-    // Criar socket TCP
+    
     sock = socket(AF_INET, SOCK_STREAM, 0);
 
 #ifdef _WIN32
@@ -37,11 +37,11 @@ int porta_aberta(const char *ip, int porta) {
 
 #endif
 
-    // Configurar endereço
+    
     alvo.sin_family = AF_INET;
     alvo.sin_port = htons(porta);
 
-    // Converter IP para formato de rede
+    
     alvo.sin_addr.s_addr = inet_addr(ip);
 
     if (alvo.sin_addr.s_addr == INADDR_NONE) {
@@ -55,7 +55,7 @@ int porta_aberta(const char *ip, int porta) {
         return 0;
     }
 
-    // Tentar conexão
+   
     if (connect(sock, (struct sockaddr *)&alvo, sizeof(alvo)) == 0) {
 
 #ifdef _WIN32
@@ -67,7 +67,7 @@ int porta_aberta(const char *ip, int porta) {
         return 1;
     }
 
-    // Fechar socket
+   
 #ifdef _WIN32
     closesocket(sock);
 #else
@@ -94,7 +94,7 @@ int main(int argc, char *argv[]) {
 #endif
 
 
-    // Verificar argumentos
+    
     if (argc != 4) {
 
         printf("\nUso:\n");
@@ -111,7 +111,7 @@ int main(int argc, char *argv[]) {
     }
 
 
-    // Receber argumentos
+    
     char *ip = argv[1];
 
     int inicio = atoi(argv[2]);
@@ -126,7 +126,7 @@ int main(int argc, char *argv[]) {
     printf("Portas: %d - %d\n\n", inicio, fim);
 
 
-    // Verificar portas
+   
     for (int porta = inicio; porta <= fim; porta++) {
 
         if (porta_aberta(ip, porta)) {

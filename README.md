@@ -18,4 +18,4 @@ Um scanner de portas TCP simples, leve e multiplataforma desenvolvido em **C**. 
 Utilizando o `gcc`:
 
 ```bash
-gcc port_scanner.c -o port_scanner
+gcc port_scanner.c -o port_scanner  
